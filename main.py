@@ -23,7 +23,7 @@ amt = int(input('How much did you want to spend per {}: '.format(freq)))
 
 
 
-frequency = {'Week (Sunday)':'W-SUN', 'Week (Monday)':'W-MON', 'Week (Tuesday)': 'W-TUE', 'Week (Wednesday)': 'W-WED',\
+frequency = {'Week (Sunday)':'W-SUN', 'Week (Monday)':'W-MONgit ', 'Week (Tuesday)': 'W-TUE', 'Week (Wednesday)': 'W-WED',\
                 'Week (Thursday)': 'W-THU', 'Week (Friday)':'W-FRI', 'Week (Saturday)': 'W-SAT', 'Month-End': 'M'}
 
 def listofdates(start_date, current_time, freq):
@@ -46,6 +46,7 @@ for date in dates:
     print("The price of Bitcoin on {} was {}. You would have bought {} BTC.".format(date,price,btc))
     
     
+#-- Analysis
 average = total_spent / total_btc
 total_worth = total_btc * current_price
 total_gain = total_worth - total_spent
