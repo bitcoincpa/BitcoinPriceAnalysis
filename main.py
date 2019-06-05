@@ -8,11 +8,14 @@ from decimal import *
 cp = requests.get('https://api.coindesk.com/v1/bpi/currentprice.json')
 hp = requests.get('https://api.coindesk.com/v1/bpi/historical/close.json?start=2011-01-01&end=2019-06-05')
 
+# --- Pandas Frequency Rate for List of Dates
+frequency = {'Week (Sunday)':'W-SUN', 'Week (Monday)':'W-MON', 'Week (Tuesday)': 'W-TUE', 'Week (Wednesday)': 'W-WED',\
+                'Week (Thursday)': 'W-THU', 'Week (Friday)':'W-FRI', 'Week (Saturday)': 'W-SAT', 'Month-End': 'M', 'Daily': 'D', 'Quarter-End' : 'Q'}
+
 # --- Print Current BTC Price
 #print("The current price of Bitcoin is " + cp.json()['bpi']['USD']['rate'])
 current_price = cp.json()['bpi']['USD']['rate_float']
 #print(current_price)
-
 
 #print("Current date: {}".format(dt.now())
 current_time = str(dt.year) + "-" + str(dt.month) + "-" + str(dt.day-1)
@@ -24,10 +27,8 @@ amt = int(input('How much did you want to spend per {}: '.format(freq)))
 
 
 
-frequency = {'Week (Sunday)':'W-SUN', 'Week (Monday)':'W-MONgit ', 'Week (Tuesday)': 'W-TUE', 'Week (Wednesday)': 'W-WED',\
-                'Week (Thursday)': 'W-THU', 'Week (Friday)':'W-FRI', 'Week (Saturday)': 'W-SAT', 'Month-End': 'M', 'Daily': 'D', 'Quarter-End' : 'Q'}
-
 def listofdates(start_date, current_time, freq):
+    
 #--- Creates list of dates based on start date and frequency inputs.
     return pd.date_range(start_date,current_time, 
             freq=frequency[freq]).strftime("%Y-%m-%d").tolist()
